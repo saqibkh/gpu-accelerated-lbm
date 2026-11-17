@@ -9,7 +9,7 @@ name: GPU Simulator
 on:
   workflow_dispatch:
   push:
-    branches: [verify-gpu-sim]
+    branches: [verify-mutant]
   pull_request:
     paths:
       - "include/**"

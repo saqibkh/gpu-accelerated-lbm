@@ -31,7 +31,7 @@ template <typename L, typename Storage, typename Collision>
 __global__ void step_kernel(Grid2D<L> g, const NodeType* flags, const Storage* src, Storage* dst,
                             Collision coll) {
     const int node = static_cast<int>(blockIdx.x * blockDim.x + threadIdx.x);
-    if (node >= g.num_nodes()) return;
+    if (node >= g.num_nodes() - 1) return;
     const int y = node / g.nx();
     const int x = node - y * g.nx();
     pull_stream_collide<L, Storage>(g, flags, src, dst, coll, x, y);
